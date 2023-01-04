@@ -1,6 +1,9 @@
 //import mongoose library 
 const mongoose = require('mongoose');
 
+//connect mongoose to mongodb, local host and database we want to connect to 
+mongoose.connect('mongodb://localhost/peopleDB');
+
 //initiate mongoose schema 
 const Schema = mongoose.Schema;
 
@@ -14,12 +17,4 @@ const personSchema = new Schema({
 const Person = mongoose.model('Person', personSchema);
 
 let david = new Person({ firstName: 'David', lastName: 'Smith', age: 25 });
-console.log(david);
-//jilla@MyYoga MINGW64 ~/mongoose-practice (main)
-//$ node person.js
-// {
-//   firstName: 'David',
-//   lastName: 'Smith',
-//   age: 25,
-//   _id: new ObjectId("63b59520e204f5d3c10bc7db")
-// }
+david.save();
