@@ -20,7 +20,10 @@ let david = new Person({ firstName: 'David', lastName: 'Smith', age: 25 });
 //david.save();
 
 let query = Person.find();
+//Person.find() will return a pending promise only 
 
+//must use exec on the query and .then to return the promise - will return all people
+//in the collection
 query.exec().then(function (people) {
   console.log(people)
 })
