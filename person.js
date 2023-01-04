@@ -22,12 +22,18 @@ let david = new Person({ firstName: 'David', lastName: 'Smith', age: 25 });
 let query = Person.find();
 //Person.find() will return a pending promise only 
 
-//must use exec on the query and .then to return the promise - will return all people
+//must use exec on the query and .then to return the executed promise - will return all people
 //in the collection
-query.exec().then(function (people) {
-  console.log(people)
-})
+// 
 
+//alternatively, to find and execute immediately - THIS IS COMMONLY USED:
+Person.find((error, result) => {
+  if (error) {
+    return console.error(error);
+  }
+  console.log(result);
+});
+//returns the person object 
 
 
 
