@@ -17,4 +17,14 @@ const personSchema = new Schema({
 const Person = mongoose.model('Person', personSchema);
 
 let david = new Person({ firstName: 'David', lastName: 'Smith', age: 25 });
-david.save();
+//david.save();
+
+let query = Person.find();
+
+query.exec().then(function (people) {
+  console.log(people)
+})
+
+
+
+
