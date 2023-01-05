@@ -17,20 +17,21 @@ const personSchema = new Schema({
 const Person = mongoose.model('Person', personSchema);
 
 let david = new Person({ firstName: 'David', lastName: 'Smith', age: 25 });
-//david.save();
-let jill = new Person({ firstName: 'Jill', lastName: 'Arnold', age: 59});
-//jill.save();
-let kelly = new Person({ firstName: 'Kelly', lastName: 'Arnold', age: 61});
-//kelly.save();
-//alternatively, to find and execute immediately - THIS IS COMMONLY USED:
-Person.find({}, (err, people) => {
-  if (err) {
-    return console.error(err);
-  }
+
+let query = Person.find();
+
+query.exec().then(function (people) {
   console.log(people);
-});
-//returns All people {} 
-//returns specific info { age: 61 } or { name: 'Kelly' }
+})
+
+ 
+  // with just query, returns constructor only 
+  //with query.exec, returns a pending promise 
+  //let query = Person.find(), query.exec().then(functon (people) { console.log(people)})
+  //will return all people from the people DB
+
+
+
 
 
 
