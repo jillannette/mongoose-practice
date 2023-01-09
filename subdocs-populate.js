@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 //connect mongoose to mongodb, local host and database we want to connect to 
-mongoose.connect('mongodb://localhost/subdocs');
+mongoose.connect('mongodb://localhost/subdocs-populate');
 
 const commentSchema = new mongoose.Schema({
   text: String,
